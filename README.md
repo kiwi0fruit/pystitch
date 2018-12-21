@@ -9,7 +9,7 @@ If you're just altering the CSS, you shouldn't need `stitch`.
 To make the page, use
 
 ```
-make index.html
+make html
 ```
 
 This will call `stitch` on `src/usage.md`. The included script will then
