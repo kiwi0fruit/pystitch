@@ -51,10 +51,48 @@ help:
 .PHONY: clean, examples
 clean:
 	rm -rf $(BUILDDIR)/*
+	rm -rf build
 
 
 examples: build/ex_bokeh.html build/ex_altair.html build/side_by_side.html build/tidy.html build/tidy.pdf build/tidy.docx build/tidy.txt build/ex_revealjs.html
 
+build/usage.html: src/usage.md
+	mkdir -p build
+	knotr src/usage.md -o build/usage.html
+
+build/side_by_side.html: src/usage.md build/usage.html
+	mkdir -p build
+	python make_page.py
+
+build/tidy.txt: src/tidy.md
+	mkdir -p build
+	cp src/tidy.md build/tidy.txt
+
+build/tidy.html: src/tidy.md
+	mkdir -p build
+	knotr src/tidy.md -o build/tidy.html
+
+build/tidy.pdf: src/tidy.md
+	mkdir -p build
+	knotr src/tidy.md -t latex -o build/tidy.pdf
+
+build/tidy.docx: src/tidy.md
+	mkdir -p build
+	knotr src/tidy.md -o build/tidy.docx
+
+build/ex_bokeh.html:
+	mkdir -p build
+	knotr src/ex_bokeh.txt -o build/ex_bokeh.html --no-self-contained
+
+build/ex_altair.html:
+	mkdir -p build
+	knotr src/ex_altair.txt -o build/ex_altair.html --no-self-contained
+
+build/ex_revealjs.html: src/ex_revealjs.txt
+	mkdir -p build
+	knotr src/ex_revealjs.txt -o build/ex_revealjs.html -t html5 \
+        --template=revealjs.html --variable theme="beige" \
+        --no-highlight --section-divs
 
 .PHONY: html
 html: examples
