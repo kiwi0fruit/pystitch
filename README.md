@@ -25,5 +25,5 @@ On Windows you might need to install `make` first:
 
 * Install [Msys2](http://www.msys2.org/)
 * Run MSYS2 MinGW 64-bit
-* Install make with `pacman -S make gettext base-devel`
+* Install make with `pacman -S make git base-devel`
 * You may need to `source <...>/activate env` from Msys2 terminal before running `make`
