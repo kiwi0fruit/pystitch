@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Whatsnew &mdash; stitch 0.3.3 documentation</title>
+  <title>Whatsnew &mdash; stitch 0.3.4 documentation</title>
   
 
+  
+  
   
   
 
@@ -22,24 +24,20 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="stitch 0.3.3 documentation" href="index.html"/>
-        <link rel="prev" title="API" href="api.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API" href="api.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -59,7 +57,7 @@
             
             
               <div class="version">
-                0.3.3
+                0.3.4
               </div>
             
           
@@ -80,11 +78,15 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">stitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Whatsnew</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-3-5">Version 0.3.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-0-3-4">Version 0.3.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-0-3-3">Version 0.3.3</a></li>
 </ul>
@@ -100,71 +102,105 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">stitch</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stitch</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Whatsnew</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Whatsnew</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/whatsnew.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/whatsnew.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-    
-        <div class="section" id="whatsnew">
+  <div class="section" id="whatsnew">
 <h1>Whatsnew<a class="headerlink" href="#whatsnew" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-0-3-5">
+<h2>Version 0.3.5<a class="headerlink" href="#version-0-3-5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Bug: Fixed a bug where empty messages from the IR kernel
+would crash the parser (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/52">GH52</a>).</li>
+</ul>
+</div>
 <div class="section" id="version-0-3-4">
 <h2>Version 0.3.4<a class="headerlink" href="#version-0-3-4" title="Permalink to this headline">¶</a></h2>
+<p>Version 0.3.4 is a minor release from 0.3.3;
+It contains several bug fixes and several new chunk options for controlling
+the output.</p>
 <ul class="simple">
-<li>API: Accept <code class="docutils literal"><span class="pre">fig.cap</span></code> as a chunk option to control the figure caption (<a class="reference external" href="https://github.com/pystitch/stitch/issues/38">GH38</a>:)</li>
-<li>API: Exposed the <code class="docutils literal"><span class="pre">no-self-contained</span></code> command-line option to the stitching
+<li>BUG: Fixed a bug in the chunk options-line parser where arguments like <code class="docutils literal notranslate"><span class="pre">fig.cap=&quot;Figure,</span> <span class="pre">captioned&quot;</span></code>, quoted strings
+containing a comma, would break the parser (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/42">GH42</a>)</li>
+<li>API: Accept <code class="docutils literal notranslate"><span class="pre">fig.cap</span></code> as a chunk option to control the figure caption (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/38">GH38</a>)</li>
+<li>API: Exposed the <code class="docutils literal notranslate"><span class="pre">no-self-contained</span></code> command-line option to the stitching
 operation.</li>
-<li>API: Added a <code class="docutils literal"><span class="pre">warning</span></code> option for controling whether stderr is included in the output.</li>
-<li>API: Changed the <code class="docutils literal"><span class="pre">on_error</span></code> option to <code class="docutils literal"><span class="pre">error</span></code> for compatability with knitr and symmytry with the <code class="docutils literal"><span class="pre">warning</span></code> option.</li>
+<li>API: Added a <code class="docutils literal notranslate"><span class="pre">warning</span></code> option for controling whether stderr is included in the output.</li>
+<li>API: Changed the <code class="docutils literal notranslate"><span class="pre">on_error</span></code> option to <code class="docutils literal notranslate"><span class="pre">error</span></code> for compatability with knitr and symmytry with the <code class="docutils literal notranslate"><span class="pre">warning</span></code> option.</li>
+<li>BUG: Various issues with javascript output (e.g. Bokeh plots) have been fixed (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/46">GH46</a>).</li>
+<li>ENH: The configuration system has been overhauled, so you should be able to set
+options at either the command-line, document metadata, or chunk level (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/36">GH36</a>)</li>
 </ul>
 </div>
 <div class="section" id="version-0-3-3">
 <h2>Version 0.3.3<a class="headerlink" href="#version-0-3-3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Included <code class="docutils literal"><span class="pre">default.css</span></code> in the source and binary distributions (<a class="reference external" href="https://github.com/pystitch/stitch/issues/26">GH26</a>).</li>
-<li>Fixed not handling output from IPython&#8217;s various <code class="docutils literal"><span class="pre">display</span></code> methods (<a class="reference external" href="https://github.com/pystitch/stitch/issues/27">GH27</a>).</li>
+<li>Included <code class="docutils literal notranslate"><span class="pre">default.css</span></code> in the source and binary distributions (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/26">GH26</a>).</li>
+<li>Fixed not handling output from IPython’s various <code class="docutils literal notranslate"><span class="pre">display</span></code> methods (<a class="reference external" href="https://github.com/kiwi0fruit/knitty/issues/27">GH27</a>).</li>
 </ul>
 </div>
 </div>
 
-    
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="api.html" class="btn btn-neutral" title="API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -173,11 +209,11 @@ operation.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Tom Augspurger.
+        &copy; Copyright 2016, Tom Augspurger
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -192,34 +228,23 @@ operation.</li>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.3',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

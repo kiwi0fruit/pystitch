@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API &mdash; stitch 0.3.3 documentation</title>
+  <title>API &mdash; stitch 0.3.4 documentation</title>
   
 
+  
+  
   
   
 
@@ -22,25 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="stitch 0.3.3 documentation" href="index.html"/>
-        <link rel="next" title="Whatsnew" href="whatsnew.html"/>
-        <link rel="prev" title="FAQ" href="faq.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Whatsnew" href="whatsnew.html" />
+    <link rel="prev" title="FAQ" href="faq.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -60,7 +58,7 @@
             
             
               <div class="version">
-                0.3.3
+                0.3.4
               </div>
             
           
@@ -81,10 +79,14 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">stitch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#languages-kernels-styles-mappings-in-yaml-metadata">Languages / Kernels / Styles mappings in YAML metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#chunk-options">Chunk Options</a></li>
 </ul>
 </li>
@@ -100,152 +102,249 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">stitch</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">stitch</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>API</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/api.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-    
-        <div class="section" id="api">
+  <div class="section" id="api">
 <h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="stitch.Stitch">
-<em class="property">class </em><code class="descclassname">stitch.</code><code class="descname">Stitch</code><span class="sig-paren">(</span><em>name</em>, <em>to='html'</em>, <em>standalone=True</em>, <em>self_contained=True</em>, <em>warning=True</em>, <em>error='continue'</em>, <em>prompt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch">
+<em class="property">class </em><code class="descclassname">knitty.stitch.</code><code class="descname">Stitch</code><span class="sig-paren">(</span><em>name: str</em>, <em>to: str = 'html'</em>, <em>standalone: bool = True</em>, <em>self_contained: bool = True</em>, <em>warning: bool = True</em>, <em>error: str = 'continue'</em>, <em>prompt: str = None</em>, <em>use_prompt: bool = False</em>, <em>pandoc_extra_args: list = None</em>, <em>pandoc_format: str = 'markdown'</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper class for managing the execution of a document.
 Stores configuration variables.</p>
 <p class="rubric">Notes</p>
 <p>Attirbutes can be set via the command-line, document YAML metadata,
 or (where appropriate) the chunk-options line.</p>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="7%" />
-<col width="93%" />
-</colgroup>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
 <tbody valign="top">
-<tr class="row-odd"><td>to</td>
-<td>(str) The output file format. Optionally inferred by the output file file extension.</td>
-</tr>
-<tr class="row-even"><td>title</td>
-<td>(str) The name of the output document.</td>
-</tr>
-<tr class="row-odd"><td>date</td>
-<td>(str)</td>
-</tr>
-<tr class="row-even"><td>author</td>
-<td>(str)</td>
-</tr>
-<tr class="row-odd"><td>self_contained</td>
-<td>(bool, default True) Whether to publish a self-contained document, where things like images or CSS stylesheets are inlined as <code class="docutils literal"><span class="pre">data</span></code> attributes.</td>
-</tr>
-<tr class="row-even"><td>standalone</td>
-<td>(bool) Whether to publish a standalone document (True) or fragment (False). Standalone documents include items like <code class="docutils literal"><span class="pre">&lt;head&gt;</span></code> elements, whereas non-standlone documents are just the <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> element.</td>
-</tr>
-<tr class="row-odd"><td>warning</td>
-<td>(bool, default True) Whether to include text printed to stderr in the output</td>
-</tr>
-<tr class="row-even"><td>error</td>
-<td>(str, default &#8216;continue&#8217;) How to handle exceptions in the executed code-chunks.</td>
-</tr>
-<tr class="row-odd"><td>prompt</td>
-<td>(str, optional) String to put before each line of the input code. Defaults to IPython-style counters.</td>
-</tr>
-<tr class="row-even"><td>echo</td>
-<td>(bool, default True) Whether to include the input code-chunk in the output document.</td>
-</tr>
-<tr class="row-odd"><td>eval</td>
-<td>(bool, default True) Whether to execute the code-chunk.</td>
-</tr>
-<tr class="row-even"><td>fig.width</td>
-<td>(str)</td>
-</tr>
-<tr class="row-odd"><td>fig.height</td>
-<td>(str)</td>
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>to</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The output file format. Optionally inferred by the output file
+file extension.</p>
+</dd>
+<dt><strong>title</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The name of the output document.</p>
+</dd>
+<dt><strong>date</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+<dt><strong>author</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+<dt><strong>self_contained</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
+<dd><p class="first last">Whether to publish a self-contained document, where
+things like images or CSS stylesheets are inlined as <code class="docutils literal notranslate"><span class="pre">data</span></code>
+attributes.</p>
+</dd>
+<dt><strong>standalone</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Whether to publish a standalone document (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or fragment (<code class="docutils literal notranslate"><span class="pre">False</span></code>).
+Standalone documents include items like <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> elements, whereas
+non-standlone documents are just the <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> element.</p>
+</dd>
+<dt><strong>warning</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
+<dd><p class="first last">Whether to include text printed to stderr in the output</p>
+</dd>
+<dt><strong>error</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, default <code class="docutils literal notranslate"><span class="pre">'continue'</span></code></span></dt>
+<dd><p class="first last">How to handle exceptions in the executed code-chunks.</p>
+</dd>
+<dt><strong>prompt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd><p class="first last">String to put before each line of the input code. Defaults to
+IPython-style counters. If you specify <code class="docutils literal notranslate"><span class="pre">prompt</span></code> option for a code
+chunk then it would have a prompt even if <code class="docutils literal notranslate"><span class="pre">use_prompt</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt><strong>echo</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
+<dd><p class="first last">Whether to include the input code-chunk in the output document.</p>
+</dd>
+<dt><strong>eval</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
+<dd><p class="first last">Whether to execute the code-chunk.</p>
+</dd>
+<dt><strong>fig.width</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+<dt><strong>fig.height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+<dt><strong>use_prompt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">False</span></code></span></dt>
+<dd><p class="first last">Whether to use prompt.</p>
+</dd>
+<dt><strong>results</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, default <code class="docutils literal notranslate"><span class="pre">'default'</span></code></span></dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">'default'</span></code>: default Stitch behaviour</li>
+<li><code class="docutils literal notranslate"><span class="pre">'pandoc'</span></code>: same as ‘default’ but plain text is parsed via Pandoc:
+if the output is a stdout message that is
+not warning/error or if it has <code class="docutils literal notranslate"><span class="pre">'text/plain'</span></code> key.
+Pandoc setings can be set like
+<code class="docutils literal notranslate"><span class="pre">{results='pandoc</span> <span class="pre">-f</span> <span class="pre">markdown-link_attributes</span> <span class="pre">--flag'}</span></code>
+(defaults are taken from knitty CLI).
+Markdown, HTML and LaTeX outputs are also parsed by Pandoc
+(with appropriate settigns).</li>
+<li><code class="docutils literal notranslate"><span class="pre">'hide'</span></code>: evaluate chunk but hide results</li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="stitch.Stitch.get_kernel">
-<code class="descname">get_kernel</code><span class="sig-paren">(</span><em>kernel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch.get_kernel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a kernel from <code class="docutils literal"><span class="pre">kernel_managers</span></code> by <code class="docutils literal"><span class="pre">kernel_name</span></code>,
+<dt id="knitty.stitch.Stitch.get_kernel">
+<code class="descname">get_kernel</code><span class="sig-paren">(</span><em>kernel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.get_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a kernel from <code class="docutils literal notranslate"><span class="pre">kernel_managers</span></code> by <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code>,
 creating it if needed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kernel_name</strong> : str</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>kernel_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+</dl>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>kp</strong> : KernelPair</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>kp</strong> <span class="classifier-delimiter">:</span> <span class="classifier">KernelPair</span></dt>
+<dd></dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="knitty.stitch.Stitch.has_trait">
+<code class="descname">has_trait</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.has_trait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the object has a trait with the specified name.</p>
+</dd></dl>
+
 <dl class="attribute">
-<dt id="stitch.Stitch.kernel_managers">
-<code class="descname">kernel_managers</code><a class="headerlink" href="#stitch.Stitch.kernel_managers" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch.kernel_managers">
+<code class="descname">kernel_managers</code><a class="headerlink" href="#knitty.stitch.Stitch.kernel_managers" title="Permalink to this definition">¶</a></dt>
 <dd><p>dict of KernelManager, KernelClient pairs, keyed by
 kernel name.</p>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="stitch.Stitch.name_resource_dir">
-<em class="property">static </em><code class="descname">name_resource_dir</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch.name_resource_dir" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch.name_resource_dir">
+<em class="property">static </em><code class="descname">name_resource_dir</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.name_resource_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Give the directory name for supporting resources</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="stitch.Stitch.parse_document_options">
-<code class="descname">parse_document_options</code><span class="sig-paren">(</span><em>meta</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch.parse_document_options" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch.parse_document_options">
+<code class="descname">parse_document_options</code><span class="sig-paren">(</span><em>meta</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.parse_document_options" title="Permalink to this definition">¶</a></dt>
 <dd><p>Modifies self to update options, depending on the document.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="stitch.Stitch.stitch">
-<code class="descname">stitch</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch.stitch" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch.set_trait">
+<code class="descname">set_trait</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.set_trait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forcibly sets trait attribute, including read-only attributes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="knitty.stitch.Stitch.stitch">
+<code class="descname">stitch</code><span class="sig-paren">(</span><em>source: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#knitty.stitch.Stitch.stitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper around <code class="docutils literal notranslate"><span class="pre">stitch_ast</span></code> method that preprocesses
+source code to allow Stitch-style code blocks and
+then convert to loaded Pandoc JSON AST.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>source</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">the actual text to be converted</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>doc</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="knitty.stitch.Stitch.stitch_ast">
+<code class="descname">stitch_ast</code><span class="sig-paren">(</span><em>ast: dict</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#knitty.stitch.Stitch.stitch_ast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Main method for converting a document.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : str</p>
-<blockquote>
-<div><p>the actual text to be converted</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>ast</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Loaded Pandoc JSON AST</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>meta, blocks</strong> : list</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>doc</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first">These should be compatible with pando’s JSON AST
+It’s a dict with keys</p>
 <blockquote class="last">
-<div><p>These should be compatible with pando&#8217;s JSON AST</p>
+<div><ul class="simple">
+<li>pandoc-api-version</li>
+<li>meta</li>
+<li>blocks</li>
+</ul>
 </div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -253,18 +352,25 @@ kernel name.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="stitch.Stitch.wrap_image_output">
-<code class="descname">wrap_image_output</code><span class="sig-paren">(</span><em>chunk_name</em>, <em>data</em>, <em>key</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch.wrap_image_output" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch.wrap_image_output">
+<code class="descname">wrap_image_output</code><span class="sig-paren">(</span><em>chunk_name</em>, <em>data</em>, <em>key</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.wrap_image_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extra handling for images</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>chunk_name, data, key</strong> : str</p>
-<p><strong>attrs: dict</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>chunk_name, data, key</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+<dt><strong>attrs: dict</strong></dt>
+<dd></dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Para[Image]</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>Para[Image]</strong></dt>
+<dd></dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -272,24 +378,28 @@ kernel name.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="stitch.Stitch.wrap_output">
-<code class="descname">wrap_output</code><span class="sig-paren">(</span><em>chunk_name</em>, <em>messages</em>, <em>execution_count</em>, <em>kp</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#stitch.Stitch.wrap_output" title="Permalink to this definition">¶</a></dt>
+<dt id="knitty.stitch.Stitch.wrap_output">
+<code class="descname">wrap_output</code><span class="sig-paren">(</span><em>chunk_name</em>, <em>messages</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.wrap_output" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrap the messages of a code-block.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>chunk_name</strong> : str</p>
-<p><strong>messages</strong> : list of dicts</p>
-<p><strong>execution_count</strong> : int or None</p>
-<p><strong>kp</strong> : KernelPair</p>
-<p><strong>attrs</strong> : dict</p>
-<blockquote>
-<div><p>options from the source options-line.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>chunk_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd></dd>
+<dt><strong>messages</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of dicts</span></dt>
+<dd></dd>
+<dt><strong>attrs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">options from the source options-line.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>output_blocks</strong> : list</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output_blocks</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd></dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -297,29 +407,54 @@ kernel name.</p>
 <p class="rubric">Notes</p>
 <p>Messages printed to stdout are wrapped in a CodeBlock.
 Messages publishing mimetypes (e.g. matplotlib figures)
-resuse Jupyter&#8217;s display priority. See
-<code class="docutils literal"><span class="pre">NbConvertBase.display_data_priority</span></code>.</p>
+resuse Jupyter’s display priority. See
+<code class="docutils literal notranslate"><span class="pre">NbConvertBase.display_data_priority</span></code>.</p>
 <p>The result should be pandoc JSON AST compatible.</p>
 </dd></dl>
 
 </dd></dl>
 
+<div class="section" id="languages-kernels-styles-mappings-in-yaml-metadata">
+<h2>Languages / Kernels / Styles mappings in YAML metadata<a class="headerlink" href="#languages-kernels-styles-mappings-in-yaml-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Mappings to markdown YAML metadata are added:</p>
+<ul class="simple">
+<li>from <strong>language names</strong> to <strong>Jupyter kernels names</strong>,</li>
+<li>from <strong>language names</strong> to <strong>CSS classes names</strong>,</li>
+<li><strong>language names</strong> are used in Stitch code blocks settings.</li>
+</ul>
+<p>For example:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+<span class="n">kernels</span><span class="o">-</span><span class="nb">map</span><span class="p">:</span>
+  <span class="n">r</span><span class="p">:</span> <span class="n">ir</span>
+  <span class="n">py2</span><span class="p">:</span> <span class="n">python2</span>
+<span class="n">styles</span><span class="o">-</span><span class="nb">map</span><span class="p">:</span>
+  <span class="n">py2</span><span class="p">:</span> <span class="n">py</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="chunk-options">
 <h2>Chunk Options<a class="headerlink" href="#chunk-options" title="Permalink to this headline">¶</a></h2>
 <p>Code chunks are blocks that look like</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>```{kernel_name, [chunk_name], **kwargs}
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```{kernel_name, [chunk_name], **kwargs}
 # code
 ```
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">kernel_name</span></code> is required, and <code class="docutils literal"><span class="pre">chunk_name</span></code> is optional.
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>```{python, chunk1, echo=False, results=pandoc}
+print(&#39;# Hello header&#39;)
+```
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code> is required, and <code class="docutils literal notranslate"><span class="pre">chunk_name</span></code> is optional.
 All parameters are separated by a comma.</p>
 <blockquote>
 <div><dl class="method">
 <dt id="kernel_name">
 <code class="descname">kernel_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#kernel_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of the kernel to use for executing the code chunk.
-Required. See <code class="docutils literal"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code>.</p>
+Required. See <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -331,30 +466,32 @@ created by that chunk. Optional.</p>
 
 <dl class="method">
 <dt id="echo">
-<code class="descname">echo</code><span class="sig-paren">(</span><em>echo=True</em><span class="sig-paren">)</span><a class="headerlink" href="#echo" title="Permalink to this definition">¶</a></dt>
-<dd><p>whether to include the input-code in the rendered output.
-Default True.</p>
+<code class="descname">echo</code><span class="sig-paren">(</span><em>echo: bool=True</em><span class="sig-paren">)</span><a class="headerlink" href="#echo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to include the input-code in the rendered output.
+Default <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eval">
-<code class="descname">eval</code><span class="sig-paren">(</span><em>eval=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Whether to execute the code cell. Default True.</p>
+<code class="descname">eval</code><span class="sig-paren">(</span><em>eval: bool=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to execute the code cell. Default <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="results">
-<code class="descname">results</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#results" title="Permalink to this definition">¶</a></dt>
-<dd><p>str; how to display the results</p>
+<code class="descname">results</code><span class="sig-paren">(</span><em>results: str=default</em><span class="sig-paren">)</span><a class="headerlink" href="#results" title="Permalink to this definition">¶</a></dt>
+<dd><p>How to display the results. Default is <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
 <ul class="simple">
-<li>hide: hide the chunk output (but still execute the chunk)</li>
+<li><code class="docutils literal notranslate"><span class="pre">results=default</span></code>: default behaviour,</li>
+<li><code class="docutils literal notranslate"><span class="pre">results=pandoc</span></code>: same as <code class="docutils literal notranslate"><span class="pre">default</span></code> but some Jupyter output is parsed as markdown: if the output is a stdout message that is not warning/error or if it has <code class="docutils literal notranslate"><span class="pre">text/plain</span></code> key. For example python <code class="docutils literal notranslate"><span class="pre">print()</span></code> output,</li>
+<li><code class="docutils literal notranslate"><span class="pre">results=hide</span></code>: hide the chunk output (but still execute the chunk).</li>
 </ul>
 </dd></dl>
 
 <dl class="method">
 <dt id="warning">
-<code class="descname">warning</code><span class="sig-paren">(</span><em>True</em><span class="sig-paren">)</span><a class="headerlink" href="#warning" title="Permalink to this definition">¶</a></dt>
-<dd><p>bool; whether to include warnings (stderr) in the ouput.</p>
+<code class="descname">warning</code><span class="sig-paren">(</span><em>warning: bool=True</em><span class="sig-paren">)</span><a class="headerlink" href="#warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to include warnings (stderr) in the ouput. Default <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -363,7 +500,7 @@ Default True.</p>
 <dd><p>Width for output figure. See <a class="reference external" href="http://pandoc.org/MANUAL.html#images">http://pandoc.org/MANUAL.html#images</a></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This will probably change to <code class="docutils literal"><span class="pre">fig.width</span></code> in a future release.</p>
+<p class="last">This will probably change to <code class="docutils literal notranslate"><span class="pre">fig.width</span></code> in a future release.</p>
 </div>
 </dd></dl>
 
@@ -373,7 +510,7 @@ Default True.</p>
 <dd><p>Height for output figure. See <a class="reference external" href="http://pandoc.org/MANUAL.html#images">http://pandoc.org/MANUAL.html#images</a></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This will probably change to <code class="docutils literal"><span class="pre">fig.height</span></code> in a future release.</p>
+<p class="last">This will probably change to <code class="docutils literal notranslate"><span class="pre">fig.height</span></code> in a future release.</p>
 </div>
 </dd></dl>
 
@@ -381,18 +518,18 @@ Default True.</p>
 </div>
 </div>
 
-    
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="whatsnew.html" class="btn btn-neutral float-right" title="Whatsnew" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="whatsnew.html" class="btn btn-neutral float-right" title="Whatsnew" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="faq.html" class="btn btn-neutral" title="FAQ" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="faq.html" class="btn btn-neutral" title="FAQ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -401,11 +538,11 @@ Default True.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Tom Augspurger.
+        &copy; Copyright 2016, Tom Augspurger
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -420,34 +557,23 @@ Default True.</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.3',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
