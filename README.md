@@ -14,3 +14,12 @@ make index.html
 
 This will call `stitch` on `src/usage.md`. The included script will then
 walk through the markdown and HTML documents, weaving the two together.
+
+## Install
+
+On Windows you might need to install `make` first:
+
+* Install [Msys2](http://www.msys2.org/)
+* Run MSYS2 MinGW 64-bit
+* Install make with `pacman -S make gettext base-devel`
+* You may need to `source <...>/activate env` from Msys2 terminal before running `make`
