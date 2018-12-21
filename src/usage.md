@@ -135,7 +135,7 @@ The command-line interface is as similar to pandoc's as possible.
 The simplest example is just passing an input markdown file:
 
     ```
-    stitch input.md
+    knotr input.md
     ```
 
 This will take the text in `input.md` execute it and convert it to HTML,
@@ -158,7 +158,7 @@ With pandoc you can convert stdin with
 With `stitch`, it's written as
 
     ```
-    $ cat input.md | stitch -
+    $ cat input.md | knotr -
     ```
 
 So a `-` is the marker for stdin.
