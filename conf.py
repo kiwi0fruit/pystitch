@@ -38,7 +38,7 @@ extensions = [
     'numpydoc',
 ]
 
-extlinks = {'issue': ('https://github.com/pystitch/stitch/issues/%s',
+extlinks = {'issue': ('https://github.com/kiwi0fruit/knitty/issues/%s',
                       'GH')}
 
 # Add any paths that contain templates here, relative to this directory.

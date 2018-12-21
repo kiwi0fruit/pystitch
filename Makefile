@@ -58,7 +58,7 @@ examples: build/ex_bokeh.html build/ex_altair.html build/side_by_side.html build
 
 build/usage.html: src/usage.md
 	mkdir -p build
-	stitch src/usage.md -o build/usage.html
+	knotr src/usage.md -o build/usage.html
 
 build/side_by_side.html: src/usage.md build/usage.html
 	mkdir -p build
@@ -70,27 +70,27 @@ build/tidy.txt: src/tidy.md
 
 build/tidy.html: src/tidy.md
 	mkdir -p build
-	stitch src/tidy.md -o build/tidy.html
+	knotr src/tidy.md -o build/tidy.html
 
 build/tidy.pdf: src/tidy.md
 	mkdir -p build
-	stitch src/tidy.md -t latex -o build/tidy.pdf
+	knotr src/tidy.md -t latex -o build/tidy.pdf
 
 build/tidy.docx: src/tidy.md
 	mkdir -p build
-	stitch src/tidy.md -o build/tidy.docx
+	knotr src/tidy.md -o build/tidy.docx
 
 build/ex_bokeh.html:
 	mkdir -p build
-	stitch src/ex_bokeh.txt -o build/ex_bokeh.html --no-self-contained
+	knotr src/ex_bokeh.txt -o build/ex_bokeh.html --no-self-contained
 
 build/ex_altair.html:
 	mkdir -p build
-	stitch src/ex_altair.txt -o build/ex_altair.html --no-self-contained
+	knotr src/ex_altair.txt -o build/ex_altair.html --no-self-contained
 
 build/ex_revealjs.html: src/ex_revealjs.txt
 	mkdir -p build
-	stitch src/ex_revealjs.txt -o build/ex_revealjs.html -t html5 \
+	knotr src/ex_revealjs.txt -o build/ex_revealjs.html -t html5 \
         --template=revealjs.html --variable theme="beige" \
         --no-highlight --section-divs
 
