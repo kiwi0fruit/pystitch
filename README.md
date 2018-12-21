@@ -2,18 +2,22 @@ This is the repo to generate the [comparison site](https://kiwi0fruit.github.io/
 
 # Building the Page
 
-If you're modifying the markdown source, you'll need to install
-[stitch](https://github.com/kiwi0fruit/knitty) (only available on Github at the moment).
-If you're just altering the CSS, you shouldn't need `stitch`.
+If you're modifying the markdown source, you'll need to install [knitty](https://github.com/kiwi0fruit/knitty) (only available on Github at the moment) together with all `dev` deps from [`setup.py`](https://github.com/kiwi0fruit/knitty/blob/master/setup.py). If you're just altering the CSS, you shouldn't need `knitty`.
 
-To make the page, use
+To make the page, use:
 
 ```
 make html
 ```
 
-This will call `stitch` on `src/usage.md`. The included script will then
-walk through the markdown and HTML documents, weaving the two together.
+To call `knotr` on `src/usage.md` and re-generate html examples swap `Makefile` and `Makefile_old` names before running `make html` (this may require installing additional python packages). The included script will then walk through the markdown and HTML documents, weaving the two together.
+
+To push the page to GitHub pages, use:
+
+```
+make github
+```
+
 
 ## Install
 
