@@ -38,6 +38,8 @@ extensions = [
     'sphinx.ext.napoleon',
 ]
 
+napoleon_include_init_with_doc = True
+
 extlinks = {'issue': ('https://github.com/kiwi0fruit/knitty/issues/%s',
                       'GH')}
 
