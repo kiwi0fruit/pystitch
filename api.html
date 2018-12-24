@@ -390,6 +390,33 @@ Markdown outputs are also parsed by Pandoc
 <p>Attirbutes can be set via the command-line, document YAML metadata,
 or (where appropriate) the chunk-options line.</p>
 <dl class="method">
+<dt id="knitty.stitch.Stitch.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name: str</em>, <em>to: str = 'html'</em>, <em>standalone: bool = True</em>, <em>self_contained: bool = True</em>, <em>warning: bool = True</em>, <em>error: str = 'continue'</em>, <em>prompt: str = None</em>, <em>use_prompt: bool = False</em>, <em>pandoc_extra_args: list = None</em>, <em>pandoc_format: str = 'markdown'</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – controls the directory for supporting files</li>
+<li><strong>to</strong> (str, default <code class="docutils literal notranslate"><span class="pre">'html'</span></code>) – output format</li>
+<li><strong>standalone</strong> (<em>bool</em><em>, </em><em>default True</em>) – whether to make a standalone document</li>
+<li><strong>self_contained</strong> (<em>bool</em><em>, </em><em>default True</em>) – </li>
+<li><strong>warning</strong> (<em>bool</em><em>, </em><em>default True</em>) – whether to include warnings (stderr) in the ouput.</li>
+<li><strong>error</strong> (<code class="docutils literal notranslate"><span class="pre">{&quot;continue&quot;,</span> <span class="pre">&quot;raise&quot;}</span></code>) – how to handle errors in the code being executed.</li>
+<li><strong>prompt</strong> (<em>str</em><em>, </em><em>default None</em>) – </li>
+<li><strong>use_prompt</strong> (<em>bool</em><em>, </em><em>default False</em>) – Whether to use prompt prefixes in code chunks</li>
+<li><strong>pandoc_extra_args</strong> (<em>list of str</em><em>, </em><em>default None</em>) – Pandoc extra args for converting text from markdown
+to JSON AST</li>
+<li><strong>pandoc_format</strong> (str, default <code class="docutils literal notranslate"><span class="pre">markdown</span></code>) – Pandoc format option for converting text from markdown
+to JSON AST</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="knitty.stitch.Stitch.get_kernel">
 <code class="descname">get_kernel</code><span class="sig-paren">(</span><em>kernel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.get_kernel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a kernel from <code class="docutils literal notranslate"><span class="pre">kernel_managers</span></code> by <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code>,
