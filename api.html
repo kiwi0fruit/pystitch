@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API &mdash; stitch 0.3.4 documentation</title>
+  <title>API &mdash; knitty 0.3.4 documentation</title>
   
 
   
@@ -48,7 +48,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> stitch
+            <a href="index.html" class="icon icon-home"> knitty
           
 
           
@@ -105,7 +105,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">stitch</a>
+          <a href="index.html">knitty</a>
         
       </nav>
 
@@ -162,61 +162,209 @@
 <em class="property">class </em><code class="descclassname">knitty.stitch.</code><code class="descname">Stitch</code><span class="sig-paren">(</span><em>name: str</em>, <em>to: str = 'html'</em>, <em>standalone: bool = True</em>, <em>self_contained: bool = True</em>, <em>warning: bool = True</em>, <em>error: str = 'continue'</em>, <em>prompt: str = None</em>, <em>use_prompt: bool = False</em>, <em>pandoc_extra_args: list = None</em>, <em>pandoc_format: str = 'markdown'</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper class for managing the execution of a document.
 Stores configuration variables.</p>
-<p class="rubric">Notes</p>
-<p>Attirbutes can be set via the command-line, document YAML metadata,
-or (where appropriate) the chunk-options line.</p>
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.to">
+<code class="descname">to</code><a class="headerlink" href="#knitty.stitch.Stitch.to" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output file format. Optionally inferred by the output file
+file extension.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>to</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">The output file format. Optionally inferred by the output file
-file extension.</p>
-</dd>
-<dt><strong>title</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">The name of the output document.</p>
-</dd>
-<dt><strong>date</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-<dt><strong>author</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-<dt><strong>self_contained</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
-<dd><p class="first last">Whether to publish a self-contained document, where
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.title">
+<code class="descname">title</code><a class="headerlink" href="#knitty.stitch.Stitch.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the output document.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.date">
+<code class="descname">date</code><a class="headerlink" href="#knitty.stitch.Stitch.date" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.author">
+<code class="descname">author</code><a class="headerlink" href="#knitty.stitch.Stitch.author" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.self_contained">
+<code class="descname">self_contained</code><a class="headerlink" href="#knitty.stitch.Stitch.self_contained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to publish a self-contained document, where
 things like images or CSS stylesheets are inlined as <code class="docutils literal notranslate"><span class="pre">data</span></code>
 attributes.</p>
-</dd>
-<dt><strong>standalone</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">Whether to publish a standalone document (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or fragment (<code class="docutils literal notranslate"><span class="pre">False</span></code>).
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.standalone">
+<code class="descname">standalone</code><a class="headerlink" href="#knitty.stitch.Stitch.standalone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to publish a standalone document (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or fragment (<code class="docutils literal notranslate"><span class="pre">False</span></code>).
 Standalone documents include items like <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> elements, whereas
 non-standlone documents are just the <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> element.</p>
-</dd>
-<dt><strong>warning</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
-<dd><p class="first last">Whether to include text printed to stderr in the output</p>
-</dd>
-<dt><strong>error</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, default <code class="docutils literal notranslate"><span class="pre">'continue'</span></code></span></dt>
-<dd><p class="first last">How to handle exceptions in the executed code-chunks.</p>
-</dd>
-<dt><strong>prompt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
-<dd><p class="first last">String to put before each line of the input code. Defaults to
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.warning">
+<code class="descname">warning</code><a class="headerlink" href="#knitty.stitch.Stitch.warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to include text printed to stderr in the output</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.error">
+<code class="descname">error</code><a class="headerlink" href="#knitty.stitch.Stitch.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>How to handle exceptions in the executed code-chunks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, default <code class="docutils literal notranslate"><span class="pre">'continue'</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.prompt">
+<code class="descname">prompt</code><a class="headerlink" href="#knitty.stitch.Stitch.prompt" title="Permalink to this definition">¶</a></dt>
+<dd><p>String to put before each line of the input code. Defaults to
 IPython-style counters. If you specify <code class="docutils literal notranslate"><span class="pre">prompt</span></code> option for a code
 chunk then it would have a prompt even if <code class="docutils literal notranslate"><span class="pre">use_prompt</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-</dd>
-<dt><strong>echo</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
-<dd><p class="first last">Whether to include the input code-chunk in the output document.</p>
-</dd>
-<dt><strong>eval</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt>
-<dd><p class="first last">Whether to execute the code-chunk.</p>
-</dd>
-<dt><strong>fig.width</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-<dt><strong>fig.height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-<dt><strong>use_prompt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, default <code class="docutils literal notranslate"><span class="pre">False</span></code></span></dt>
-<dd><p class="first last">Whether to use prompt.</p>
-</dd>
-<dt><strong>results</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, default <code class="docutils literal notranslate"><span class="pre">'default'</span></code></span></dt>
-<dd><ul class="first last simple">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, optional</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.echo">
+<code class="descname">echo</code><a class="headerlink" href="#knitty.stitch.Stitch.echo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to include the input code-chunk in the output document.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.eval">
+<code class="descname">eval</code><a class="headerlink" href="#knitty.stitch.Stitch.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to execute the code-chunk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool, default <code class="docutils literal notranslate"><span class="pre">True</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.fig.width">
+<code class="descclassname">fig.</code><code class="descname">width</code><a class="headerlink" href="#knitty.stitch.Stitch.fig.width" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.fig.height">
+<code class="descclassname">fig.</code><code class="descname">height</code><a class="headerlink" href="#knitty.stitch.Stitch.fig.height" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.use_prompt">
+<code class="descname">use_prompt</code><a class="headerlink" href="#knitty.stitch.Stitch.use_prompt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to use prompt.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">bool, default <code class="docutils literal notranslate"><span class="pre">False</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="knitty.stitch.Stitch.results">
+<code class="descname">results</code><a class="headerlink" href="#knitty.stitch.Stitch.results" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">'default'</span></code>: default Stitch behaviour</li>
 <li><code class="docutils literal notranslate"><span class="pre">'pandoc'</span></code>: same as ‘default’ but plain text is parsed via Pandoc:
 if the output is a stdout message that is
@@ -224,16 +372,23 @@ not warning/error or if it has <code class="docutils literal notranslate"><span 
 Pandoc setings can be set like
 <code class="docutils literal notranslate"><span class="pre">{results='pandoc</span> <span class="pre">-f</span> <span class="pre">markdown-link_attributes</span> <span class="pre">--flag'}</span></code>
 (defaults are taken from knitty CLI).
-Markdown, HTML and LaTeX outputs are also parsed by Pandoc
+Markdown outputs are also parsed by Pandoc
 (with appropriate settigns).</li>
 <li><code class="docutils literal notranslate"><span class="pre">'hide'</span></code>: evaluate chunk but hide results</li>
 </ul>
-</dd>
-</dl>
-</td>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">str, default <code class="docutils literal notranslate"><span class="pre">'default'</span></code></td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Attirbutes can be set via the command-line, document YAML metadata,
+or (where appropriate) the chunk-options line.</p>
 <dl class="method">
 <dt id="knitty.stitch.Stitch.get_kernel">
 <code class="descname">get_kernel</code><span class="sig-paren">(</span><em>kernel_name</em><span class="sig-paren">)</span><a class="headerlink" href="#knitty.stitch.Stitch.get_kernel" title="Permalink to this definition">¶</a></dt>
@@ -243,17 +398,11 @@ creating it if needed.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>kernel_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-</dl>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kernel_name</strong> (<em>str</em>) – </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>kp</strong> <span class="classifier-delimiter">:</span> <span class="classifier">KernelPair</span></dt>
-<dd></dd>
-</dl>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>kp</strong></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">KernelPair</td>
 </tr>
 </tbody>
 </table>
@@ -300,18 +449,11 @@ then convert to loaded Pandoc JSON AST.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>source</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">the actual text to be converted</p>
-</dd>
-</dl>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> (<em>str</em>) – the actual text to be converted</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>doc</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd></dd>
-</dl>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>doc</strong></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -325,27 +467,19 @@ then convert to loaded Pandoc JSON AST.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>ast</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd><p class="first last">Loaded Pandoc JSON AST</p>
-</dd>
-</dl>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ast</strong> (<em>dict</em>) – Loaded Pandoc JSON AST</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>doc</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd><p class="first">These should be compatible with pando’s JSON AST
-It’s a dict with keys</p>
-<blockquote class="last">
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>doc</strong> – These should be compatible with pando’s JSON AST
+It’s a dict with keys<blockquote>
 <div><ul class="simple">
 <li>pandoc-api-version</li>
 <li>meta</li>
 <li>blocks</li>
 </ul>
 </div></blockquote>
-</dd>
-</dl>
 </td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
 </tr>
 </tbody>
 </table>
@@ -359,18 +493,16 @@ It’s a dict with keys</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>chunk_name, data, key</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-<dt><strong>attrs: dict</strong></dt>
-<dd></dd>
-</dl>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong><strong>, </strong><strong>key</strong> (<em>chunk_name</em><em>,</em>) – </li>
+<li><strong>attrs</strong> (<em>dict</em>) – </li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>Para[Image]</strong></dt>
-<dd></dd>
-</dl>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Para[Image]</p>
 </td>
 </tr>
 </tbody>
@@ -385,21 +517,17 @@ It’s a dict with keys</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>chunk_name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd></dd>
-<dt><strong>messages</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of dicts</span></dt>
-<dd></dd>
-<dt><strong>attrs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
-<dd><p class="first last">options from the source options-line.</p>
-</dd>
-</dl>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>chunk_name</strong> (<em>str</em>) – </li>
+<li><strong>messages</strong> (<em>list of dicts</em>) – </li>
+<li><strong>attrs</strong> (<em>dict</em>) – options from the source options-line.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>output_blocks</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
-<dd></dd>
-</dl>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>output_blocks</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
 </td>
 </tr>
 </tbody>
