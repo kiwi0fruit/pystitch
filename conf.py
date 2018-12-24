@@ -35,7 +35,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'sphinx.ext.extlinks',
-    'numpydoc',
+    'sphinx.ext.napoleon',
 ]
 
 extlinks = {'issue': ('https://github.com/kiwi0fruit/knitty/issues/%s',
@@ -56,7 +56,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'stitch'
+project = 'knitty'
 copyright = '2016, Tom Augspurger'
 author = 'Tom Augspurger'
 
