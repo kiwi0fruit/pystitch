@@ -51,9 +51,6 @@ And knots are kind of like a buggy version of knits.
 
 But to be clear the package name is ``knitty`` and command-line tool is ``knotr``.
 
-You'll also need pandoc>=1.18.
-Either use your system package manager, or use the ``pypandoc`` provided on conda-forge, which includes
-pandoc.
 
 Supported Python Versions
 -------------------------
