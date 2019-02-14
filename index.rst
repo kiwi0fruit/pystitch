@@ -118,7 +118,7 @@ libraries, minimizing the work we have to do ourselves. ``stitch`` uses
    output
 -  `pandocfilters <https://github.com/jgm/pandocfilters/>`__ for
    converting code-chunk output to pandoc's AST
--  `pypandoc <https://github.com/coldfix/pypandoc>`__ for communicating
+-  `panflute <https://github.com/sergiocorreia/panflute>`__ for communicating
    with pandoc
 -  `click <http://click.pocoo.org>`__ for the command-line interface.
 
