@@ -50,7 +50,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><a href="https://github.com/ellisonbg/altair">Altair</a> is a declarative statistical visualization library for python.</p>
 <p>This document can be compiled to html with</p>
 <pre><code>```
-knotr ex_altair.txt -o ex_altair.html --no-self-contained
+pandoc ex_altair.txt -f markdown -t json |
+knitty html --standalone |
+pandoc -f json --standalone -o ex_altair.html
 ```</code></pre>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="im">from</span> altair <span class="im">import</span> Chart, load_dataset
    ...: <span class="im">from</span> IPython <span class="im">import</span> display

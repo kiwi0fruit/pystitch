@@ -3,7 +3,7 @@
 
 The syntax for creating an executable block is
 
-    ```{kernel_name}
+    ```kernel_name
     # Your code here
     ```
 
@@ -27,9 +27,9 @@ Code chunks can accept up to two positional arguments
 
 And some keyword arguments
 
+- `chunk` (same as `chunk_name` but kwarg)
 - `echo`
 - `eval`
-- `include`
 
 The rest of this document is intended to demonstrate `stitch` in action.
 
@@ -38,14 +38,14 @@ The rest of this document is intended to demonstrate `stitch` in action.
 `stitch` keeps a registry of kernels, meaning state is preserved between
 code chunks
 
-```{python}
+```python
 x = 10
 ```
 
 
 There was no output there, but we can reuse `x` now
 
-```{python}
+```python
 print(x + 2)
 ```
 
@@ -58,7 +58,8 @@ You can exclude the code, but include the output with the `echo=False` option
 For example, we can show the fibbonnaci numbers less than 100, without
 bothering the reader with how we calculate them:
 
-```{python, echo=False}
+@{echo=False}
+```python
 def fib(n):
     a, b = 0, 1
     while a < n:
@@ -72,7 +73,7 @@ fib(100)
 
 By default, exceptions are displayed and the stitching continues
 
-```{python}
+```python
 raise ValueError("ValueError!")
 ```
 
@@ -82,7 +83,7 @@ We reuse IPython's rich display system, so objects defining `_repr_html_`,
 `_repr_latex_`, etc. will have that represented in the output.
 Pandas DataFrames, for example, do so
 
-```{python}
+```python
 import pandas as pd
 pd.options.display.latex.repr = True
 import seaborn as sns
@@ -96,7 +97,7 @@ df.head()
 It's possible to capture rich output, like graphics
 
 
-```{python}
+```python
 %matplotlib inline
 
 sns.set()
@@ -105,7 +106,8 @@ sns.pairplot(df, hue="species");
 
 You can control image attributes from the chunk options
 
-```{python, width=80, height=80px}
+@{width=80, height=80px}
+```python
 %matplotlib inline
 
 sns.set()
@@ -135,7 +137,9 @@ The command-line interface is as similar to pandoc's as possible.
 The simplest example is just passing an input markdown file:
 
     ```
-    knotr input.md
+    pandoc input.md -t json |
+    knitty html --standalone --self-contained |
+    pandoc -f json --standalone --self-contained
     ```
 
 This will take the text in `input.md` execute it and convert it to HTML,
@@ -152,16 +156,16 @@ The biggest difference right now is the treatment of stdin.
 With pandoc you can convert stdin with
 
     ```
-    $ cat input.md | pandoc
+    cat input.md | pandoc
     ```
 
 With `stitch`, it's written as
 
     ```
-    $ cat input.md | knotr -
+    cat input.md | pandoc -t json |
+    knitty html --standalone --self-contained |
+    pandoc -f json --standalone --self-contained
     ```
-
-So a `-` is the marker for stdin.
 
 ## Notes on Pandoc
 
@@ -180,9 +184,4 @@ With pandoc, this options are enabled with the
 - `--standalone`
 - `--self-contained`
 
-options. With `stitch`, the defaults are flipped to True, and disabled with
-
-- `--no-standalone`
-- `--no-self-contained`
-
-
+options.

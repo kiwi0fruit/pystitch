@@ -52,7 +52,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </blockquote>
 <p>This document can be compiled to HTML with</p>
 <pre><code>```
-knotr ex_bokeh.txt -o ex_bokeh.html --no-self-contained
+pandoc ex_bokeh.txt -f markdown -t json |
+knitty html --standalone |
+pandoc -f json --standalone -o ex_bokeh.html
 ```</code></pre>
 <p>The easiest way to use stitch &amp; Bokeh together is with the <code>Bokeh.output_notebook</code> method.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">In [<span class="dv">1</span>]: <span class="im">from</span> bokeh.plotting <span class="im">import</span> figure, show, output_notebook
