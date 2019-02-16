@@ -65,9 +65,14 @@ Usage
 You write a markdown file, and include code chunks that look like
 
 
-.. code-block:: sh
+.. code-block:: python
 
-   ```{kernel_name, [chunk_name], **kwds}
+   ```{kernel_name, [chunk_name,] **kwargs}
+   # your code here
+   ```
+   
+   @{[chunk=chunk_name,] **kwargs}
+   ```kernel_name
    # your code here
    ```
 
@@ -85,19 +90,13 @@ More options will be added.
 The command-line interface is essentailly the same as pandocs.
 For the most part you call
 
-.. code-block:: sh
+.. code-block:: bash
 
-   knotr input_file.md -o output_file.html
+   pandoc input_file.md -t json |
+   knitty html --standalone --self-contained |
+   pandoc -f json -o output_file.html
 
-You can use ``-t`` for the output type, or infer it from the file extension
-of ``-o``.
-All other options are passed through to pandoc.
-
-stitch defines a few new options that control stitch-specific features
-
-* ``--no-standalone``
-* ``--no-self-contained``
-* ``--use-prompt``: enable code chunk prefixes
+Knitty can accept any Pandoc options but the first arg should be the arg passed by Pandoc to it's filters.
 
 
 What's in a Name?
