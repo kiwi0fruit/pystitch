@@ -24,7 +24,8 @@ And today we'll only concern ourselves with the first two.
 As quoted at the top, this really is about facilitating analysis: going as quickly as possible from question to answer.
 
 
-```{python, echo=False}
+@{echo=False}
+```python
 %matplotlib inline
 
 import os
@@ -46,7 +47,7 @@ After transforming the dataset to be tidy, we're able to quickly get the answer.
 We'll grab some NBA game data from basketball-reference.com using pandas' `read_html` function, which returns a list of DataFrames.
 
 
-```{python}
+```python
 fp = 'nba.csv'
 
 if not os.path.exists(fp):
@@ -67,7 +68,7 @@ As you can see, we have a bit of general munging to do before tidying.
 Each month slips in an extra row of mostly NaNs, the column names aren't too useful, and we have some dtypes to fix up.
 
 
-```{python}
+```python
 column_names = {'Date': 'date', 'Start (ET)': 'start',
                 'Unamed: 2': 'box', 'Visitor/Neutral': 'away_team', 
                 'PTS': 'away_points', 'Home/Neutral': 'home_team',
@@ -102,7 +103,7 @@ In this case, an observation is a `(team, game)` pair, which we don't have yet. 
 `pd.melt` works by taking observations that are spread across columns (`away_team`, `home_team`), and melting them down into one column with multiple rows. However, we don't want to lose the metadata (like `game_id` and `date`) that is shared between the observations. By including those columns as `id_vars`, the values will be repeated as many times as needed to stay with their observations.
 
 
-```{python}
+```python
 tidy = pd.melt(games.reset_index(),
                id_vars=['game_id', 'date'], value_vars=['away_team', 'home_team'],
                value_name='team')
@@ -114,7 +115,7 @@ The DataFrame `tidy` meets our rules for tidiness: each variable is in a column,
 Now the translation from question ("How many days of rest between games") to operation ("date of today's game - date of previous game - 1") is direct:
 
 
-```{python}
+```python
 # For each team... get number of days between games
 tidy.groupby('team')['date'].diff().dt.days - 1
 ```
@@ -126,7 +127,7 @@ It's about setting yourself up for success so that the answers naturally flow fr
 Let's assign that back into our DataFrame
 
 
-```{python}
+```python
 tidy['rest'] = tidy.sort_values('date').groupby('team').date.diff().dt.days - 1
 tidy.dropna().head()
 ```
@@ -135,7 +136,7 @@ tidy.dropna().head()
 To show the inverse of `melt`, let's take `rest` values we just calculated and place them back in the original DataFrame with a `pivot_table`.
 
 
-```{python}
+```python
 by_game = (pd.pivot_table(tidy, values='rest',
                           index=['game_id', 'date'],
                           columns='variable')
@@ -152,12 +153,13 @@ So really, we have two tidy datasets, `tidy` for answering team-level questions,
 One potentially interesting question is "what was each team's average days of rest, at home and on the road?" With a tidy dataset (the DataFrame `tidy`, since it's team-level), `seaborn` makes this easy (more on seaborn in a future post):
 
 
-```{python, echo=False}
+@{echo=False}
+```python
 sns.set(style='ticks', context='paper')
 ```
 
 
-```{python}
+```python
 g = sns.FacetGrid(tidy, col='team', col_wrap=6, hue='team', size=2)
 g.map(sns.barplot, 'variable', 'rest');
 ```
@@ -166,14 +168,14 @@ g.map(sns.barplot, 'variable', 'rest');
 An example of a game-level statistic is the distribution of rest differences in games:
 
 
-```{python}
+```python
 df['home_win'] = df['home_points'] > df['away_points']
 df['rest_spread'] = df['home_rest'] - df['away_rest']
 df.dropna().head()
 ```
 
 
-```{python}
+```python
 delta = (by_game.home_rest - by_game.away_rest).dropna().astype(int)
 ax = (delta.value_counts()
     .reindex(np.arange(delta.min(), delta.max() + 1), fill_value=0)
@@ -186,7 +188,7 @@ ax.set(xlabel='Difference in Rest (Home - Away)', ylabel='Games');
 
 Or the win percent by rest difference
 
-```{python}
+```python
 fig, ax = plt.subplots(figsize=(12, 6))
 sns.barplot(x='rest_spread', y='home_win', data=df.query('-3 <= rest_spread <= 3'),
             color='#4c72b0', ax=ax)
@@ -198,7 +200,7 @@ sns.despine()
 Pandas has two useful methods for quickly converting from wide to long format (`stack`) and long to wide (`unstack`).
 
 
-```{python}
+```python
 rest = (tidy.groupby(['date', 'variable'])
             .rest.mean()
             .dropna())
@@ -209,7 +211,7 @@ rest.head()
 `rest` is in a "long" form since we have a single column of data, with multiple "columns" of metadata (in the MultiIndex). We use `.unstack` to move from long to wide.
 
 
-```{python}
+```python
 rest.unstack().head()
 ```
 
@@ -217,14 +219,14 @@ rest.unstack().head()
 `stack` is the inverse.
 
 
-```{python}
+```python
 rest.unstack().stack()
 ```
 
 With `.unstack` you can move between those APIs that expect there data in long-format and those APIs that work with wide-format data. For example, `DataFrame.plot()`, works with wide-form data, one line per column.
 
 
-```{python}
+```python
 with sns.color_palette() as pal:
     b, g = pal.as_hex()[:2]
 
@@ -256,7 +258,7 @@ We need to create an indicator for whether the home team won.
 Add it as a column called `home_win` in `games`.
 
 
-```{python}
+```python
 df['home_win'] = df.home_points > df.away_points
 ```
 
@@ -270,7 +272,7 @@ It'd be better to use some kind of independent measure of team strength, but thi
 We'll use a similar `melt` operation as earlier, only now with the `home_win` variable we just created.
 
 
-```{python}
+```python
 wins = (
     pd.melt(df.reset_index(),
             id_vars=['game_id', 'date', 'home_win'],
@@ -288,14 +290,14 @@ wins.head()
 Pause for visualization, because why not
 
 
-```{python}
+```python
 g = sns.FacetGrid(wins.reset_index(), hue='team', size=7, aspect=.5, palette=['k'])
 g.map(sns.pointplot, 'is_home', 'win_pct').set(ylim=(0, 1));
 ```
 
 (It'd be great if there was a library built on top of matplotlib that auto-labeled each point decently well. Apparently this is a difficult problem to do in general).
 
-```{python}
+```python
 g = sns.FacetGrid(wins.reset_index(), col='team', hue='team', col_wrap=5, size=2)
 g.map(sns.pointplot, 'is_home', 'win_pct');
 ```
@@ -305,7 +307,7 @@ Those two graphs show that most teams have a higher win-percent at home than awa
 Let's aggregate over home / away to get an overall win percent per team.
 
 
-```{python}
+```python
 win_percent = (
     # Use sum(games) / sum(games) instead of mean
     # since I don't know if teams play the same
@@ -318,7 +320,7 @@ win_percent.head()
 
 
 
-```{python}
+```python
 win_percent.sort_values().plot.barh(figsize=(6, 12), width=.85, color='k')
 plt.tight_layout()
 sns.despine()
@@ -329,7 +331,7 @@ plt.xlabel("Win Percent");
 Is there a relationship between overall team strength and their home-court advantage?
 
 
-```{python}
+```python
 plt.figure(figsize=(8, 5))
 (wins.win_pct
     .unstack()
@@ -346,7 +348,7 @@ Let's get the team strength back into `df`.
 You could you `pd.merge`, but I prefer `.map` when joining a `Series`.
 
 
-```{python}
+```python
 df = df.assign(away_strength=df['away_team'].map(win_percent),
                home_strength=df['home_team'].map(win_percent),
                point_diff=df['home_points'] - df['away_points'],
@@ -355,20 +357,21 @@ df.head()
 ```
 
 
-```{python}
+```python
 import statsmodels.formula.api as sm
 
 df['home_win'] = df.home_win.astype(int)  # for statsmodels
 ```
 
-```{python echo=False}
+@{echo=False}
+```python
 # monkey patch statsmodels
 from statsmodels.iolib.summary import Summary
 Summary._repr_latex_ = lambda x: x.as_latex().replace('_', '\_')
 ```
 
 
-```{python}
+```python
 mod = sm.logit('home_win ~ home_strength + away_strength + home_rest + away_rest', df)
 res = mod.fit()
 res.summary()
@@ -379,14 +382,14 @@ The strength variables both have large coefficients (really we should be using s
 With `.assign` we can quickly explore variations in formula.
 
 
-```{python}
+```python
 (sm.Logit.from_formula('home_win ~ strength_diff + rest_spread',
                        df.assign(strength_diff=df.home_strength - df.away_strength))
     .fit().summary())
 ```
 
 
-```{python}
+```python
 mod = sm.Logit.from_formula('home_win ~ home_rest + away_rest', df)
 res = mod.fit()
 res.summary()

@@ -51,9 +51,6 @@ And knots are kind of like a buggy version of knits.
 
 But to be clear the package name is ``knitty`` and command-line tool is ``knotr``.
 
-You'll also need pandoc>=1.18.
-Either use your system package manager, or use the ``pypandoc`` provided on conda-forge, which includes
-pandoc.
 
 Supported Python Versions
 -------------------------
@@ -68,9 +65,14 @@ Usage
 You write a markdown file, and include code chunks that look like
 
 
-.. code-block:: sh
+.. code-block:: python
 
-   ```{kernel_name, [chunk_name], **kwds}
+   ```{kernel_name, [chunk_name,] **kwargs}
+   # your code here
+   ```
+   
+   @{[chunk=chunk_name,] **kwargs}
+   ```kernel_name
    # your code here
    ```
 
@@ -88,19 +90,13 @@ More options will be added.
 The command-line interface is essentailly the same as pandocs.
 For the most part you call
 
-.. code-block:: sh
+.. code-block:: bash
 
-   knotr input_file.md -o output_file.html
+   cat input_file.md | pre-knitty | pandoc -t json |
+   knitty html --standalone --self-contained |
+   pandoc -f json --standalone --self-contained -o output_file.html
 
-You can use ``-t`` for the output type, or infer it from the file extension
-of ``-o``.
-All other options are passed through to pandoc.
-
-stitch defines a few new options that control stitch-specific features
-
-* ``--no-standalone``
-* ``--no-self-contained``
-* ``--use-prompt``: enable code chunk prefixes
+Knitty can accept any Pandoc options but the first arg should be the arg passed by Pandoc to it's filters.
 
 
 What's in a Name?
@@ -121,7 +117,7 @@ libraries, minimizing the work we have to do ourselves. ``stitch`` uses
    output
 -  `pandocfilters <https://github.com/jgm/pandocfilters/>`__ for
    converting code-chunk output to pandoc's AST
--  `pypandoc <https://github.com/coldfix/pypandoc>`__ for communicating
+-  `panflute <https://github.com/sergiocorreia/panflute>`__ for communicating
    with pandoc
 -  `click <http://click.pocoo.org>`__ for the command-line interface.
 

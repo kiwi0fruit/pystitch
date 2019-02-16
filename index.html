@@ -199,9 +199,14 @@ long as you have a Python 2 kernel installed (see <code class="docutils literal 
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>You write a markdown file, and include code chunks that look like</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="sb">```</span><span class="o">{</span>kernel_name, <span class="o">[</span>chunk_name<span class="o">]</span>, **kwds<span class="o">}</span>
-<span class="c1"># your code here</span>
-<span class="sb">```</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>```{kernel_name, [chunk_name,] **kwargs}
+# your code here
+```
+
+@{[chunk=chunk_name,] **kwargs}
+```kernel_name
+# your code here
+```
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">kernel_name</span></code> is required (see <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code>).
@@ -215,18 +220,12 @@ to plots if they’re saved to disk.</p>
 <p>More options will be added.</p>
 <p>The command-line interface is essentailly the same as pandocs.
 For the most part you call</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>knotr input_file.md -o output_file.html
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat input_file.md <span class="p">|</span> pre-knitty <span class="p">|</span> pandoc -t json <span class="p">|</span>
+knitty html --standalone --self-contained <span class="p">|</span>
+pandoc -f json --standalone --self-contained -o output_file.html
 </pre></div>
 </div>
-<p>You can use <code class="docutils literal notranslate"><span class="pre">-t</span></code> for the output type, or infer it from the file extension
-of <code class="docutils literal notranslate"><span class="pre">-o</span></code>.
-All other options are passed through to pandoc.</p>
-<p>stitch defines a few new options that control stitch-specific features</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">--no-standalone</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">--no-self-contained</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">--use-prompt</span></code>: enable code chunk prefixes</li>
-</ul>
+<p>Knitty can accept any Pandoc options but the first arg should be the arg passed by Pandoc to it’s filters.</p>
 </div>
 <div class="section" id="what-s-in-a-name">
 <h2>What’s in a Name?<a class="headerlink" href="#what-s-in-a-name" title="Permalink to this headline">¶</a></h2>
@@ -330,6 +329,7 @@ with pandoc</li>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
 
   
