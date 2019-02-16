@@ -10,7 +10,7 @@ To make the page, use:
 make html
 ```
 
-To call `knotr` on `src/usage.md` and re-generate html examples swap `Makefile` and `Makefile_old` names before running `make html` (this may require installing additional python packages). The included script will then walk through the markdown and HTML documents, weaving the two together.
+To call `knitty` on `src/usage.md` and re-generate html examples swap `Makefile` and `Makefile_old` names before running `make html` (this may require installing additional python packages). The included script will then walk through the markdown and HTML documents, weaving the two together.
 
 To push the page to GitHub pages, use:
 
