@@ -90,7 +90,7 @@ build/ex_altair.html:
 
 build/ex_revealjs.html: src/ex_revealjs.txt
 	mkdir -p build
-	cat src/ex_revealjs.txt | pandoc -t json | knitty "$(pandoc-filter-arg -t html5)" --standalone --self-contained | pandoc -f json --standalone --self-contained -o build/ex_revealjs.html -t html5 \
+	cat src/ex_revealjs.txt | pre-knitty | pandoc -t json | knitty "$(pandoc-filter-arg -t html5)" --standalone --self-contained | pandoc -f json --standalone --self-contained -o build/ex_revealjs.html -t html5 \
         --template=revealjs.html --variable theme="beige" \
         --no-highlight --section-divs
 
