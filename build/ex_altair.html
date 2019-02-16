@@ -50,7 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><a href="https://github.com/ellisonbg/altair">Altair</a> is a declarative statistical visualization library for python.</p>
 <p>This document can be compiled to html with</p>
 <pre><code>```
-pandoc ex_altair.txt -f markdown -t json |
+cat ex_altair.txt | pre-knitty | pandoc -t json |
 knitty html --standalone |
 pandoc -f json --standalone -o ex_altair.html
 ```</code></pre>

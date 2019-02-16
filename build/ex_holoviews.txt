@@ -6,7 +6,7 @@
 This document can be compiled to HTML with
 
     ```
-    pandoc ex_holoviews.txt -f markdown -t json |
+    cat ex_holoviews.txt | pre-knitty | pandoc -t json |
     knitty html --standalone |
     pandoc -f json --standalone -H header.js -o ex_holoviews.html
     ```

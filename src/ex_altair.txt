@@ -5,7 +5,7 @@
 This document can be compiled to html with
 
     ```
-    pandoc ex_altair.txt -f markdown -t json |
+    cat ex_altair.txt | pre-knitty | pandoc -t json |
     knitty html --standalone |
     pandoc -f json --standalone -o ex_altair.html
     ```

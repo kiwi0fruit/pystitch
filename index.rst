@@ -92,7 +92,7 @@ For the most part you call
 
 .. code-block:: bash
 
-   pandoc input_file.md -t json |
+   cat input_file.md | pre-knitty | pandoc -t json |
    knitty html --standalone --self-contained |
    pandoc -f json --standalone --self-contained -o output_file.html
 

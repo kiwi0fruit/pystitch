@@ -5,7 +5,7 @@
 This document can be compiled to HTML with
 
     ```
-    pandoc ex_bokeh.txt -f markdown -t json |
+    cat ex_bokeh.txt | pre-knitty | pandoc -t json |
     knitty html --standalone |
     pandoc -f json --standalone -o ex_bokeh.html
     ```

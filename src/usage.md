@@ -137,7 +137,7 @@ The command-line interface is as similar to pandoc's as possible.
 The simplest example is just passing an input markdown file:
 
     ```
-    pandoc input.md -t json |
+    cat input.md | pre-knitty | pandoc -t json |
     knitty html --standalone --self-contained |
     pandoc -f json --standalone --self-contained
     ```
@@ -162,7 +162,7 @@ With pandoc you can convert stdin with
 With `stitch`, it's written as
 
     ```
-    cat input.md | pandoc -t json |
+    cat input.md | pre-knitty | pandoc -t json |
     knitty html --standalone --self-contained |
     pandoc -f json --standalone --self-contained
     ```
