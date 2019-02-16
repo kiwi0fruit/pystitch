@@ -34,7 +34,16 @@ Code chunks are blocks that look like
 
 .. code-block:: none
 
-   ```{kernel_name, [chunk_name], **kwargs}
+   ```{kernel_name, [chunk_name,] **kwargs}
+   # code
+   ```
+
+or
+
+.. code-block:: none
+
+   @{[chunk=chunk_name,] **kwargs}
+   ```kernel_name
    # code
    ```
 
@@ -42,7 +51,8 @@ Example:
 
 .. code-block:: python
 
-   ```{python, chunk1, echo=False, results=pandoc}
+   @{chunk=chunk1, echo=False}
+   ```python
    print('# Hello header')
    ```
 
