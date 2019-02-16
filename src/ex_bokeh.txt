@@ -5,7 +5,9 @@
 This document can be compiled to HTML with
 
     ```
-    knotr ex_bokeh.txt -o ex_bokeh.html --no-self-contained
+    pandoc ex_bokeh.txt -f markdown -t json |
+    knitty html --standalone |
+    pandoc -f json --standalone -o ex_bokeh.html
     ```
 
 The easiest way to use stitch & Bokeh together is with the ``Bokeh.output_notebook``
