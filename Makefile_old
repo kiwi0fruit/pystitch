@@ -58,7 +58,7 @@ examples: build/ex_bokeh.html build/ex_altair.html build/side_by_side.html build
 
 build/usage.html: src/usage.md
 	mkdir -p build
-	knotr src/usage.md -o build/usage.html
+	cat src/usage.md | pre-knitty | pandoc -t json | knitty html --standalone --self-contained | pandoc -f json --standalone --self-contained -o build/usage.html
 
 build/side_by_side.html: src/usage.md build/usage.html
 	mkdir -p build
@@ -70,27 +70,27 @@ build/tidy.txt: src/tidy.md
 
 build/tidy.html: src/tidy.md
 	mkdir -p build
-	knotr src/tidy.md -o build/tidy.html
+	cat src/tidy.md | pre-knitty | pandoc -t json | knitty html --standalone --self-contained | pandoc -f json --standalone --self-contained -o build/tidy.html
 
 build/tidy.pdf: src/tidy.md
 	mkdir -p build
-	knotr src/tidy.md -t latex -o build/tidy.pdf
+	cat src/tidy.md | pre-knitty | pandoc -t json | knitty latex --standalone --self-contained | pandoc -t latex --standalone --self-contained -o build/tidy.pdf
 
 build/tidy.docx: src/tidy.md
 	mkdir -p build
-	knotr src/tidy.md -o build/tidy.docx
+	cat src/tidy.md | pre-knitty | pandoc -t json | knitty docx --standalone --self-contained | pandoc -f json --standalone --self-contained -o build/tidy.docx
 
 build/ex_bokeh.html:
 	mkdir -p build
-	knotr src/ex_bokeh.txt -o build/ex_bokeh.html --no-self-contained
+	cat src/ex_bokeh.txt | pre-knitty | pandoc -t json | knitty html --standalone | pandoc -f json --standalone -o build/ex_bokeh.html
 
 build/ex_altair.html:
 	mkdir -p build
-	knotr src/ex_altair.txt -o build/ex_altair.html --no-self-contained
+	cat src/ex_altair.txt | pre-knitty | pandoc -t json | knitty html --standalone | pandoc -f json --standalone -o build/ex_altair.html
 
 build/ex_revealjs.html: src/ex_revealjs.txt
 	mkdir -p build
-	knotr src/ex_revealjs.txt -o build/ex_revealjs.html -t html5 \
+	cat src/ex_revealjs.txt | pandoc -t json | knitty "$(pandoc-filter-arg -t html5)" --standalone --self-contained | pandoc -f json --standalone --self-contained -o build/ex_revealjs.html -t html5 \
         --template=revealjs.html --variable theme="beige" \
         --no-highlight --section-divs
 
