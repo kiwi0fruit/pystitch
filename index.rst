@@ -94,7 +94,7 @@ For the most part you call
 
    pandoc input_file.md -t json |
    knitty html --standalone --self-contained |
-   pandoc -f json -o output_file.html
+   pandoc -f json --standalone --self-contained -o output_file.html
 
 Knitty can accept any Pandoc options but the first arg should be the arg passed by Pandoc to it's filters.
 
